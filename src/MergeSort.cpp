@@ -1,0 +1,44 @@
+//
+//  MergeSort.cpp
+//  CISP400 FInal
+//
+//  Created by Admin on 6/27/22.
+//  Copyright © 2022 Admin. All rights reserved.
+//
+
+#include "MergeSort.hpp"
+#include "Robot.hpp"
+
+void msort(int f, int l, Robot robotArray[], Robot tmp[]) {
+    int m;
+    
+    if (f < l) {
+        m = (f + l) / 2;
+        msort(f, m, robotArray, tmp);
+        msort(m + 1, l, robotArray, tmp);
+        merge(f, m, l, robotArray, tmp);
+    }
+}
+
+void merge(int f, int m, int l, Robot robotArray[], Robot tmp[]) {
+    int t1, t2, t3;
+    t1 = f; t2 = m + 1; t3 = f;
+    
+    while (t1 <= m and t2 <= l) {
+        if (robotArray[t1].getTurns() < robotArray[t2].getTurns())
+            tmp[t3++] = robotArray[t1++];
+        
+        else
+            tmp[t3++] = robotArray[t2++];
+    }
+    
+    while (t1 <= m)
+        tmp[t3++] = robotArray[t1++];
+    
+    while (t2 <= l)
+        tmp[t3++] = robotArray[t2++];
+    
+    for (t1 = f; t1 <= l; t1++)
+        robotArray[t1] = tmp[t1];
+}
+
