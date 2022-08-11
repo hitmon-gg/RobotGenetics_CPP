@@ -28,8 +28,8 @@ public:
     Robot(); // Initialization
     Robot(Robot*, Robot*, int); // Baby Robot Constructor
     
-    void senseArea(Map*);
-    void move(Map*);
+    void senseArea(Map* const);
+    void move(Map* const);
     Robot& operator=(const Robot &right);
     
     // Setters

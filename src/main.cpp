@@ -6,7 +6,6 @@
 //
 
 #include <iostream>
-#include <ctime>
 
 #include "RobotData.hpp"
 #include "Robot.hpp"
@@ -17,14 +16,11 @@
 
 // Prototypes
 void unitTest();
-void robotInitialization(Robot[]);
 void robotTesting(Robot[], RobotData&);
 void cullAndCreate(Robot[]);
 void resetRobots(Robot[]);
 
 int main(){
-    double seed = time(0);
-    srand(seed);
     
     // Initialize and create array of Robots
     Robot robotArray[c_maxRobots];
@@ -68,7 +64,7 @@ void robotTesting(Robot robotArray[], RobotData& dataObj){
     // create robot, run each through map, loop c_maxSimulation times for c_maxRobots robots
     for (int i{0}; i < c_maxRobots; i++){
         Map mapObj;
-        Map* mapPtr = &mapObj;
+        Map* const mapPtr = &mapObj;
         
         do{
             robotArray[i].move(mapPtr);
@@ -76,7 +72,10 @@ void robotTesting(Robot robotArray[], RobotData& dataObj){
         } while (robotArray[i].getBattery() > 0);
         
         dataObj.setAccumulator(robotArray[i].getTurns() - 5);
+        
     }
+    
+    
 }
 
 void cullAndCreate(Robot robotArray[]){
@@ -86,7 +85,7 @@ void cullAndCreate(Robot robotArray[]){
     msort(0, (c_maxRobots - 1), robotArray, tmp);
     
     // Cull and create new robots in bottom half of array
-    for (int i{0}; i < c_halfMax; i += 2){
+    for (int i{0}; i < c_halfMaxRobots; i += 2){
         if (i == 0){
             Robot newRobot1(&robotArray[c_maxRobots - 1],
                             &robotArray[c_maxRobots - 2], i);
@@ -99,11 +98,11 @@ void cullAndCreate(Robot robotArray[]){
         }
         
         else{
-            Robot newRobot1(&robotArray[c_maxRobots - i],
-                            &robotArray[c_maxRobots - (i + 1)], i);
+            Robot newRobot1(&robotArray[c_maxRobots - (i + 1)],
+                            &robotArray[c_maxRobots - (i + 2)], i);
             
-            Robot newRobot2(&robotArray[c_maxRobots - i],
-                            &robotArray[c_maxRobots - (i + 1)], (i + 1));
+            Robot newRobot2(&robotArray[c_maxRobots - (i + 1)],
+                            &robotArray[c_maxRobots - (i + 2)], (i + 1));
             
             robotArray[i]     = newRobot1;
             robotArray[i + 1] = newRobot2;
@@ -112,10 +111,9 @@ void cullAndCreate(Robot robotArray[]){
 }
 
 void resetRobots(Robot robotArray[]){
-    NumGen numObj;
 
-    for (int i{c_halfMax - 1}; i < c_maxRobots; i++){
-        numObj.setRandNum(0, 99);
+    for (int i{c_halfMaxRobots - 1}; i < c_maxRobots; i++){
+        NumGen numObj(0, 99);
         
         robotArray[i].setBattery(5);
         robotArray[i].setTurns(0);

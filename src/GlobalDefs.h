@@ -12,7 +12,7 @@
 // GLOBAL CONSTS
 const int c_maxSimulations{100};
 const int c_maxRobots{200};
-const int c_halfMax = c_maxRobots / 2;
+const int c_halfMaxRobots = c_maxRobots / 2;
 const int c_numOfGenes = 16;
 const int c_numOfProteins = 5;
 

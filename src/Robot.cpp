@@ -13,8 +13,7 @@
 
 // No-Arg Constructor
 Robot::Robot(){
-    NumGen numObj;
-    numObj.setRandNum(0, 99);
+    NumGen numObj(0, 99);
     
     m_position = numObj.getRandNum();
     m_battery  = 5;
@@ -27,8 +26,7 @@ Robot::Robot(){
 
 // Constructor for baby robots
 Robot::Robot(Robot* parent1, Robot* parent2, int counter){
-    NumGen numObj;
-    numObj.setRandNum(0, 99);
+    NumGen numObj(0, 99);
     
     m_position = numObj.getRandNum();
     m_battery  = 5;
@@ -66,7 +64,7 @@ Robot::Robot(Robot* parent1, Robot* parent2, int counter){
 }
 
 // Robot map traversing sensors
-void Robot::senseArea(Map* mapPtr){
+void Robot::senseArea(Map* const mapPtr){
     
     // calibrate sensor
     for (int i{0}; i < 4; i++)
@@ -103,7 +101,7 @@ void Robot::senseArea(Map* mapPtr){
 }
 
 // Robot move logic
-void Robot::move(Map* mapPtr){
+void Robot::move(Map* const mapPtr){
     int geneMatch{0};
     int newPosition{m_position};
     int direction{0};
@@ -122,16 +120,15 @@ void Robot::move(Map* mapPtr){
         
         if (geneMatch == 4){
             direction = m_genes[i].m_proteins[4];
-            i = 16;
+            break;
         }
         
         if (i == 15)
             direction = m_genes[i].m_proteins[4];
     }
     
-    if (direction == 5){
-        NumGen numObj;
-        numObj.setRandNum(0, 3);
+    if (direction == 4){
+        NumGen numObj(0, 3);
         direction = numObj.getRandNum();
     }
     

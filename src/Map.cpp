@@ -10,7 +10,6 @@
 #include "NumGen.hpp"
 
 Map::Map() {
-    NumGen numObj;
     const int SIZE{100};
     const int MAX_BATTERIES{40};
     int space{0};
@@ -22,7 +21,7 @@ Map::Map() {
     
     // Place 40 batteries randomly
     do{
-        numObj.setRandNum(0, 99);
+        NumGen numObj(0, 99);
         space = numObj.getRandNum();
         
         if (m_batteryArray[space] == 'o'){

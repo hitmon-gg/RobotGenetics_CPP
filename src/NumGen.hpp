@@ -12,10 +12,10 @@
 #include <stdio.h>
 
 class NumGen{
-    int m_num;
+    unsigned int m_num;
     
 public:
-    void setRandNum(int, int);
+    NumGen(int, int);
     int  getRandNum() const;
 };
 

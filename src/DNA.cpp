@@ -10,15 +10,14 @@
 #include "NumGen.hpp"
 
 DNA::DNA(){
-    NumGen numObj;
     
     // Randomize proteins N S E W
     for (int i{0}; i < (c_numOfProteins - 1); i++){
-        numObj.setRandNum(0, 3);
-        m_proteins[i] = numObj.getRandNum();
+        NumGen numObjA(0, 3);
+        m_proteins[i] = numObjA.getRandNum();
     }
     
     // Randomize protein Move
-    numObj.setRandNum(0, 4);
-    m_proteins[4] = numObj.getRandNum();
+    NumGen numObjB(0, 4);
+    m_proteins[4] = numObjB.getRandNum();
 }
