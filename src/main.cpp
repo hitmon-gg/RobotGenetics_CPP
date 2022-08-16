@@ -72,10 +72,7 @@ void robotTesting(Robot robotArray[], RobotData& dataObj){
         } while (robotArray[i].getBattery() > 0);
         
         dataObj.setAccumulator(robotArray[i].getTurns() - 5);
-        
     }
-    
-    
 }
 
 void cullAndCreate(Robot robotArray[]){
