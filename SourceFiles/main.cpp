@@ -114,8 +114,8 @@ void resetRobots(Robot robotArray[]){
     for (int i{c_halfMaxRobots - 1}; i < c_maxRobots; i++){
         NumGen numObj(0, 99);
         
-        robotArray[i].setBattery(5);
-        robotArray[i].setTurns(0);
+        robotArray[i].resetBattery();
+        robotArray[i].resetTurns();
         robotArray[i].setPosition(numObj.getRandNum());
     }
 }
