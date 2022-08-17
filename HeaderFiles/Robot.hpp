@@ -33,8 +33,8 @@ public:
     Robot& operator=(const Robot &right);
     
     // Setters
-    void setBattery (int);
-    void setTurns   (int);
+    void resetBattery ();
+    void resetTurns   ();
     void setPosition(int);
     
     // Getters

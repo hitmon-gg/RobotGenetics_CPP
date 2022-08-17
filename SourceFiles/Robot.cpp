@@ -185,8 +185,8 @@ Robot& Robot::operator=(const Robot &right) {
 }
 
 // Setters
-void Robot::setBattery (int b) {m_battery = b;}
-void Robot::setTurns   (int t) {m_turns = t;}
+void Robot::resetBattery()     {m_battery = 5;}
+void Robot::resetTurns()       {m_turns = 0;}
 void Robot::setPosition(int p) {m_position = p;}
 
 // Getters
