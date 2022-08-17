@@ -1,9 +1,9 @@
 //
 //  Map.cpp
-//  CISP400 FInal
+//  CISP400 Final
 //
-//  Created by Admin on 6/23/22.
-//  Copyright © 2022 Admin. All rights reserved.
+//  Created by Ian Wallace on 6/23/22.
+//  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
 #include "Map.hpp"

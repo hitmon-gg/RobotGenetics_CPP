@@ -1,8 +1,9 @@
 //
-//  Filename: Final
-//      Name: Ian Wallace
-//     Class: CISP 400 Fowler, FLC
-//       DUE: 12-17-21
+//  main.cpp
+//  CISP400 Final
+//
+//  Created by Ian Wallace on 6/23/22.
+//  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
 #include <iostream>
