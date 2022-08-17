@@ -64,7 +64,7 @@ void robotTesting(Robot robotArray[], RobotData& dataObj){
     // create robot, run each through map, loop c_maxSimulation times for c_maxRobots robots
     for (int i{0}; i < c_maxRobots; i++){
         Map mapObj;
-        Map* const mapPtr = &mapObj;
+        Map* mapPtr = &mapObj;
         
         do{
             robotArray[i].move(mapPtr);
@@ -72,6 +72,8 @@ void robotTesting(Robot robotArray[], RobotData& dataObj){
         } while (robotArray[i].getBattery() > 0);
         
         dataObj.setAccumulator(robotArray[i].getTurns() - 5);
+
+        mapPtr = nullptr;
     }
 }
 
