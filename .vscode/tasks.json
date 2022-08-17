@@ -25,6 +25,8 @@
             "label": "C/C++: cpp.exe build active file",
             "command": "C:\\MinGW\\bin\\cpp.exe",
             "args": [
+                "-I",
+                "C:\\Users\\ianda\\OneDrive\\Documents\\GitHub\\RobotGenetics_CPP\\HeaderFiles",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
