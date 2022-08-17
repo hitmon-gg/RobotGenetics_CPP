@@ -86,14 +86,14 @@ void Robot::senseArea(Map* const mapPtr){
         m_sensor[1] = 2;
     
     // East
-    if ((m_position + 1) % 10 == 0 or m_position == 9)
+    if ((m_position + 1) % 10 == 0 || m_position == 9)
         m_sensor[2] = 1;
     
     else if (mapPtr -> m_batteryArray[m_position + 1] == 'b')
         m_sensor[2] = 2;
     
     // West
-    if (m_position % 10 == 0 or m_position == 0)
+    if (m_position % 10 == 0 || m_position == 0)
         m_sensor[3] = 1;
     
     else if (mapPtr -> m_batteryArray[m_position - 1] == 'b')
@@ -114,7 +114,7 @@ void Robot::move(Map* const mapPtr){
         geneMatch = 0;
         
         for (int j{0}; j < (c_numOfProteins - 1); j++){
-            if (m_genes[i].m_proteins[j] == m_sensor[j] or m_genes[i].m_proteins[j] == 3) // 3 don't care
+            if (m_genes[i].m_proteins[j] == m_sensor[j] || m_genes[i].m_proteins[j] == 3) // 3 don't care
                 geneMatch++;
         }
         

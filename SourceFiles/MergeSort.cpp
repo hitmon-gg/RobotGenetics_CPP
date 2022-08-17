@@ -24,7 +24,7 @@ void merge(int f, int m, int l, Robot robotArray[], Robot tmp[]) {
     int t1, t2, t3;
     t1 = f; t2 = m + 1; t3 = f;
     
-    while (t1 <= m and t2 <= l) {
+    while (t1 <= m && t2 <= l) {
         if (robotArray[t1].getTurns() < robotArray[t2].getTurns())
             tmp[t3++] = robotArray[t1++];
         
