@@ -10,10 +10,10 @@
 #include "RobotData.hpp"
 #include "GlobalDefs.h"
 
-void RobotData::setFitnessScore() {m_fitnessScore.push_back(m_accumulator);}
-void RobotData::resetAccumulator(){m_accumulator = 0;}
-void RobotData::setAccumulator(int a){m_accumulator += a;}
-int  RobotData::getRobotFitness(int i) const {return m_fitnessScore[i];}
+void RobotData::setFitnessScore()       { m_fitnessScore.push_back(m_accumulator); }
+void RobotData::resetAccumulator()      { m_accumulator = 0; }
+void RobotData::setAccumulator(int a)   { m_accumulator += a; }
+int  RobotData::getRobotFitness(int i) const { return m_fitnessScore[i]; }
 
 // Print data function
 void RobotData::outputData() const {

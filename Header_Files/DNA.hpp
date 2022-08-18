@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include "GlobalDefs.h"
 
-struct DNA{
+struct DNA {
     // Element 0 N, 1 S, 2 E, 3 W, 4 Move
     // int 0 empty, 1 wall, 2 battery, 3 don't care
     int m_proteins[c_numOfProteins];

@@ -20,11 +20,11 @@ Map::Map() {
         m_batteryArray[i] = 'o';
     
     // Place 40 batteries randomly
-    do{
+    do {
         NumGen numObj(0, 99);
         space = numObj.getRandNum();
         
-        if (m_batteryArray[space] == 'o'){
+        if (m_batteryArray[space] == 'o') {
             m_batteryArray[space] = 'b';
             counter++;
         }

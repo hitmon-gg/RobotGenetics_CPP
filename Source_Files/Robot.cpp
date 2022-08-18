@@ -12,7 +12,7 @@
 #include "GlobalDefs.h"
 
 // No-Arg Constructor
-Robot::Robot(){
+Robot::Robot() {
     NumGen numObj(0, 99);
     
     m_position = numObj.getRandNum();
@@ -25,7 +25,7 @@ Robot::Robot(){
 
 
 // Constructor for baby robots
-Robot::Robot(Robot* parent1, Robot* parent2, int counter){
+Robot::Robot(Robot* parent1, Robot* parent2, int counter) {
     NumGen numObj(0, 99);
     
     m_position = numObj.getRandNum();
@@ -34,7 +34,7 @@ Robot::Robot(Robot* parent1, Robot* parent2, int counter){
     
     // Else combine genes from 2 robots into two new robots
     // Child 1
-    if (counter % 2 == 0){
+    if (counter % 2 == 0) {
         for (int i{0}; i < (c_numOfGenes / 2); i++)
             m_genes[i] = parent1 -> m_genes[i];
         
@@ -43,7 +43,7 @@ Robot::Robot(Robot* parent1, Robot* parent2, int counter){
     }
     
     //Child 2
-    else{
+    else {
         for (int i{0}; i < (c_numOfGenes / 2); i++)
             m_genes[i] = parent2 -> m_genes[i];
         
@@ -52,7 +52,7 @@ Robot::Robot(Robot* parent1, Robot* parent2, int counter){
     }
     
     // If mutation, swap genes around by 1;
-    if (numObj.getRandNum() < 5){
+    if (numObj.getRandNum() < 5) {
         DNA tempGene;
         tempGene = m_genes[0];
         
@@ -64,7 +64,7 @@ Robot::Robot(Robot* parent1, Robot* parent2, int counter){
 }
 
 // Robot map traversing sensors
-void Robot::senseArea(Map* const mapPtr){
+void Robot::senseArea(Map* const mapPtr) {
     
     // calibrate sensor
     for (int i{0}; i < 4; i++)
@@ -101,7 +101,7 @@ void Robot::senseArea(Map* const mapPtr){
 }
 
 // Robot move logic
-void Robot::move(Map* const mapPtr){
+void Robot::move(Map* const mapPtr) {
     int geneMatch{0};
     int newPosition{m_position};
     int direction{0};
@@ -110,15 +110,15 @@ void Robot::move(Map* const mapPtr){
     senseArea(mapPtr);
     
     // check genes
-    for (int i{0}; i < c_numOfGenes; i++){
+    for (int i{0}; i < c_numOfGenes; i++) {
         geneMatch = 0;
         
-        for (int j{0}; j < (c_numOfProteins - 1); j++){
+        for (int j{0}; j < (c_numOfProteins - 1); j++) {
             if (m_genes[i].m_proteins[j] == m_sensor[j] || m_genes[i].m_proteins[j] == 3) // 3 don't care
                 geneMatch++;
         }
         
-        if (geneMatch == 4){
+        if (geneMatch == 4) {
             direction = m_genes[i].m_proteins[4];
             break;
         }
@@ -127,32 +127,32 @@ void Robot::move(Map* const mapPtr){
             direction = m_genes[i].m_proteins[4];
     }
     
-    if (direction == 4){
+    if (direction == 4) {
         NumGen numObj(0, 3);
         direction = numObj.getRandNum();
     }
     
     // move position
     // N = - 10,
-    else if (direction == 0){
+    else if (direction == 0) {
         if (m_sensor[0] != 1)
             newPosition = m_position - 10;
     }
     
     //S = + 10
-    else if (direction == 1){
+    else if (direction == 1) {
         if (m_sensor[1] != 1)
             newPosition = m_position + 10;
     }
     
     //E = + 1
-    else if (direction == 2){
+    else if (direction == 2) {
         if (m_sensor[2] != 1)
             newPosition = m_position + 1;
     }
     
     //W = - 1
-    else if (direction == 3){
+    else if (direction == 3) {
         if (m_sensor[3] != 1)
             newPosition = m_position - 1;
     }
@@ -185,14 +185,14 @@ Robot& Robot::operator=(const Robot &right) {
 }
 
 // Setters
-void Robot::resetBattery()     {m_battery = 5;}
-void Robot::resetTurns()       {m_turns = 0;}
-void Robot::setPosition(int p) {m_position = p;}
+void Robot::resetBattery()     { m_battery = 5; }
+void Robot::resetTurns()       { m_turns = 0; }
+void Robot::setPosition(int p) { m_position = p; } 
 
 // Getters
-int Robot::getBattery()  const {return m_battery;}
-int Robot::getTurns()    const {return m_turns;}
-int Robot::getPosition() const {return m_position;}
-int Robot::getProteins(int i, int j) const {return m_genes[i].m_proteins[j];}
+int Robot::getBattery()  const { return m_battery; }
+int Robot::getTurns()    const { return m_turns; }
+int Robot::getPosition() const { return m_position; }
+int Robot::getProteins(int i, int j) const { return m_genes[i].m_proteins[j]; }
 
-void Robot::addPower() {m_battery += 5;}
+void Robot::addPower() { m_battery += 5; }

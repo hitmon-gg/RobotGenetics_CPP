@@ -12,12 +12,14 @@
 #include <stdio.h>
 #include <vector>
 
-class RobotData{
+class RobotData {
     int  m_accumulator;
     std::vector<int> m_fitnessScore;
     int  m_size;
     
 public:
+    RobotData() { m_accumulator = 0; m_size = 0; }
+
     void setFitnessScore();
     void resetAccumulator();
     void setAccumulator(int);
