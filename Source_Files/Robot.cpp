@@ -169,6 +169,7 @@ void Robot::move(Map* const mapPtr) {
 }
 
 Robot& Robot::operator=(const Robot &right) {
+    
     if (this != &right) {
         m_position = right.getPosition();
         m_battery = right.getBattery();
@@ -185,6 +186,7 @@ Robot& Robot::operator=(const Robot &right) {
 }
 
 // Setters
+void Robot::addPower()         { m_battery += 5; }
 void Robot::resetBattery()     { m_battery = 5; }
 void Robot::resetTurns()       { m_turns = 0; }
 void Robot::setPosition(int p) { m_position = p; } 
@@ -195,4 +197,4 @@ int Robot::getTurns()    const { return m_turns; }
 int Robot::getPosition() const { return m_position; }
 int Robot::getProteins(int i, int j) const { return m_genes[i].m_proteins[j]; }
 
-void Robot::addPower() { m_battery += 5; }
+
