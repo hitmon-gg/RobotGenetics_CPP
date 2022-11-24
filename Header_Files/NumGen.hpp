@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-class NumGen {
+class NumGen 
+{
     unsigned int m_num;
     
 public:

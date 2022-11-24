@@ -14,22 +14,23 @@
 #include "DNA.hpp"
 #include "GlobalDefs.h"
 
-class Robot {
+class Robot 
+{
     int m_position;
     int m_battery;
     int m_turns;
     int m_sensor[4]; // Element 0 N, 1 S, 2 E, 3 W... 0 = empty, 1 = wall, 2 = battery
     DNA m_genes[c_numOfGenes];
     
-    void addPower();
+    void addPower(); // adds additional battery power per battery eaten
     
 public:
     // Constructors
     Robot(); // Initialization
-    Robot(Robot*, Robot*, int); // Baby Robot Constructor
+    Robot(Robot&, Robot&, int); // Baby Robot Constructor
     
-    void senseArea(Map* const);
-    void move(Map* const);
+    void senseArea(const Map);
+    void move(Map&);
     Robot& operator=(const Robot &right);
     
     // Setters

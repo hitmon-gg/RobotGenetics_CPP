@@ -9,22 +9,27 @@
 #include "Map.hpp"
 #include "NumGen.hpp"
 
-Map::Map() {
+Map::Map() 
+{
     const int SIZE{100};
     const int MAX_BATTERIES{40};
     int space{0};
     int counter{0};
     
     // Create Battery Array
-    for (int i{0}; i < SIZE; i++)
+    for (int i{ 0 }; i < SIZE; i++)
+    {
         m_batteryArray[i] = 'o';
-    
+    }
+
     // Place 40 batteries randomly
-    do {
+    do 
+    {
         NumGen numObj(0, 99);
         space = numObj.getRandNum();
         
-        if (m_batteryArray[space] == 'o') {
+        if (m_batteryArray[space] == 'o') 
+        {
             m_batteryArray[space] = 'b';
             counter++;
         }

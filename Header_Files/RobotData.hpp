@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include <vector>
 
-class RobotData {
+class RobotData 
+{
     int  m_accumulator;
     std::vector<int> m_fitnessScore;
     int  m_size;

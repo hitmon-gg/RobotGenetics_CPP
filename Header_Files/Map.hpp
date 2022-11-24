@@ -11,7 +11,8 @@
 
 #include <stdio.h>
 
-struct Map {
+struct Map 
+{
     // 'b' for battery space, 'o' for empty space
     char m_batteryArray[100];
     

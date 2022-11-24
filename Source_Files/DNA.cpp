@@ -9,10 +9,12 @@
 #include "DNA.hpp"
 #include "NumGen.hpp"
 
-DNA::DNA(){
+DNA::DNA()
+{
     
     // Randomize proteins N S E W
-    for (int i{0}; i < (c_numOfProteins - 1); i++) {
+    for (int i{0}; i < (c_numOfProteins - 1); i++) 
+    {
         NumGen numObjA(0, 3);
         m_proteins[i] = numObjA.getRandNum();
     }

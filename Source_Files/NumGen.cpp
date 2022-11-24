@@ -13,8 +13,8 @@
 std::random_device rd;
 std::mt19937 gen(rd());
 
-NumGen::NumGen(int min, int max) {
-
+NumGen::NumGen(int min, int max) 
+{
     std::uniform_int_distribution<int> dist(min, max);
     m_num = dist(gen);
 }
