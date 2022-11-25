@@ -6,8 +6,8 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "MergeSort.hpp"
-#include "Robot.hpp"
+#include "../include/MergeSort.hpp"
+#include "../include/Robot.hpp"
 
 void msort(int f, int l, Robot robotArray[], Robot tmp[]) 
 {

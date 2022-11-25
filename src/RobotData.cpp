@@ -7,8 +7,8 @@
 //
 
 #include <iostream>
-#include "RobotData.hpp"
-#include "GlobalDefs.h"
+#include "../include/RobotData.hpp"
+#include "../include/GlobalDefs.h"
 
 void RobotData::setFitnessScore()     { m_fitnessScore.push_back(m_accumulator); }
 void RobotData::resetAccumulator()    { m_accumulator = 0; }

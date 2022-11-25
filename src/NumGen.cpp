@@ -8,7 +8,7 @@
 
 #include <cctype>
 #include <random>
-#include "NumGen.hpp"
+#include "../include/NumGen.hpp"
 
 std::random_device rd;
 std::mt19937 gen(rd());
