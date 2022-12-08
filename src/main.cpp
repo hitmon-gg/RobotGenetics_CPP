@@ -133,7 +133,7 @@ void cullAndCreate(Robot robotArray[])
             robotArray[0] = child1;
             robotArray[1] = child2;
 
-        } else  {
+        } else {
             
             Robot child1(robotArray[c_maxRobots - (i + 1)],
                             robotArray[c_maxRobots - (i + 2)], i);
@@ -156,7 +156,6 @@ void cullAndCreate(Robot robotArray[])
  */
 void resetRobots(Robot robotArray[]) 
 {
-
     for (int i{c_halfMaxRobots - 1}; i < c_maxRobots; i++)
     {
         NumGen numObj(0, 99);
