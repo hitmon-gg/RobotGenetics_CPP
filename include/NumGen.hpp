@@ -17,7 +17,7 @@ class NumGen
     
 public:
     NumGen(int, int);
-    int  getRandNum() const;
+    [[nodiscard]] int getRandNum() const;
 };
 
 #endif /* NumGen_hpp */

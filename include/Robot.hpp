@@ -27,7 +27,7 @@ class Robot
 public:
     // Constructors
     Robot(); // Initialization
-    Robot(Robot&, Robot&, int); // Baby Robot Constructor
+    Robot(const Robot&, const Robot&, const int); // Baby Robot Constructor
     
     void senseArea(const Map);
     void move(Map&);
@@ -39,10 +39,10 @@ public:
     void setPosition(int);
     
     // Getters
-    int getBattery() const;
-    int getTurns() const;
-    int getPosition() const;
-    int getProteins(int i, int j) const;
+    [[nodiscard]] int getBattery() const;
+    [[nodiscard]] int getTurns() const;
+    [[nodiscard]] int getPosition() const;
+    [[nodiscard]] int getProteins(int i, int j) const;
 };
 
 #endif /* Robot_hpp */

@@ -8,11 +8,18 @@
 
 #include <cctype>
 #include <random>
-#include "../include/NumGen.hpp"
+#include "NumGen.hpp"
 
 std::random_device rd;
 std::mt19937 gen(rd());
 
+/**
+ *  Function: NumGen
+ *  Parameters: min => minimum integer designation for random number
+ *              max => maximum integer designation for random number
+ *  Notes: Uses uniform_int_distribution from <random> for more accurate
+ *         random number generation.
+ */
 NumGen::NumGen(int min, int max) 
 {
     std::uniform_int_distribution<int> dist(min, max);

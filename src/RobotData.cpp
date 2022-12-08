@@ -7,37 +7,51 @@
 //
 
 #include <iostream>
-#include "../include/RobotData.hpp"
-#include "../include/GlobalDefs.h"
+#include "RobotData.hpp"
+#include "GlobalDefs.h"
 
-void RobotData::setFitnessScore()     { m_fitnessScore.push_back(m_accumulator); }
+void RobotData::setFitnessScore()     { m_fitnessScoreVector.push_back(m_accumulator); }
 void RobotData::resetAccumulator()    { m_accumulator = 0; }
 void RobotData::setAccumulator(int a) { m_accumulator += a; }
-int  RobotData::getRobotFitness(int i) const { return m_fitnessScore[i]; }
+int  RobotData::getRobotFitness(int i) const { return m_fitnessScoreVector[i]; }
 
-// Print data function
-void RobotData::outputData() const 
+/**
+ *  Name: outputData
+ *  Parameters: none
+ *  Notes: Takes each fitness score in m_fitnessScoreVector and
+ *         outputs the average by dividing the fitness against the
+ *         max amount of robots. 
+ */
+void RobotData::outputData()
 {
-    double average{0.0}, fitness{0.0};
-    
+    double average{0.0};
+    double fitnessDouble{0.0};
+    int generation = 1;
     std::cout << "Printing Results...\n";
     std::cout << "Generation: Average Fitness Score\n";
     
-    for (int i{0}; i < c_maxSimulations; i++) 
+    for (const auto& fitnessInt : m_fitnessScoreVector)
     {
-        fitness = getRobotFitness(i);
-        average = fitness / c_maxRobots;
+        fitnessDouble = static_cast<double>(fitnessInt);
         
-        if (i < 9)
+        //fitness = getRobotFitness(i);
+        average = fitnessDouble / c_maxRobots;
+        
+        if (generation <= 9)
         {
-            printf("0%d: %.2f\t", i + 1, average);
+            printf("0%d: %.2f\t", generation, average);
             
-        } else { 
+        } else if (generation == 100) {
+            
+            printf("%d:%.2f\t", generation, average);
 
-            printf("%d: %.2f\t", i + 1, average);
+        } else {
+            
+            printf("%d: %.2f\t", generation, average);
         }
         
-        if ((i + 1) % 5 == 0) std::cout << '\n';
+        if ((generation) % 5 == 0) std::cout << '\n';
+        generation++;
     }
     
     std::cout << '\n';

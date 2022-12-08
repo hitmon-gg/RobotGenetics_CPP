@@ -6,9 +6,19 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "../include/MergeSort.hpp"
-#include "../include/Robot.hpp"
+#include "MergeSort.hpp"
+#include "Robot.hpp"
 
+/**
+ *  Functions: msort, merge
+ *  Parameters: f => first
+                m => middle
+ *              l => last
+ *              robotArray => array holding all robot objs, from main.
+ *              tmp => temporary array used in sorting
+ *  Notes: Classic merge sort array utilizing recursion. Sorts robots based
+ *         on their turn member variable in ascending order.
+ */
 void msort(int f, int l, Robot robotArray[], Robot tmp[]) 
 {
     int m;

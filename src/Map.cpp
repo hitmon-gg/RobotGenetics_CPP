@@ -6,9 +6,17 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "../include/Map.hpp"
-#include "../include/NumGen.hpp"
+#include "Map.hpp"
+#include "NumGen.hpp"
 
+/**
+ *  Function: Map()
+ *  Parameters: none
+ *  Notes: No-arg Constructor for 10 x 10 map grid generation.
+ *         Uses an int array of batteries (either empty = 'o' or full = 'b')
+ *         for the robots to traverse. Exactly 40 batteries will be randomly
+ *         placed in each array. 
+ */
 Map::Map() 
 {
     const int SIZE{100};

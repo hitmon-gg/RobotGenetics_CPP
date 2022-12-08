@@ -9,21 +9,19 @@
 #include <iostream>
 #include <memory>
 
-#include "../include/RobotData.hpp"
-#include "../include/Robot.hpp"
-#include "../include/NumGen.hpp"
-#include "../include/Map.hpp"
-#include "../include/GlobalDefs.h"
-#include "../include/MergeSort.hpp"
+#include "RobotData.hpp"
+#include "Robot.hpp"
+#include "NumGen.hpp"
+#include "Map.hpp"
+#include "GlobalDefs.h"
+#include "MergeSort.hpp"
 
-// Prototypes
 void robotTesting(Robot[], RobotData&);
 void cullAndCreate(Robot[]);
 void resetRobots(Robot[]);
 
 int main() 
 {
-    
     // Initialize and create array of Robots
     Robot robotArray[c_maxRobots];
     
@@ -38,12 +36,8 @@ int main()
     // Simulation loop
     for (int i{0}; i < c_maxSimulations; i++) 
     {
-        
         // Test Robots by running each one through a random maze
         robotTesting(robotArray, dataObj);
-        
-        // Add fitness Score to robot data object
-        dataObj.setFitnessScore();
         
         // Segment off worst performing robots and combine best
         // performing robots to pass genes to lower half robot population
@@ -64,11 +58,26 @@ int main()
     return 0;
 }
 
+/**
+ *  Function: robotTesting
+ *  Parameters: robotArray (type Robot), dataObj (type RobotData)
+ *  Notes: Takes all robot objects created in robotArray and
+ *         places each one in a randomly generated 10 x 10 'map'.
+ *         The m_turns member variable in robot records the amount
+ *         of turns it takes each robot before it runs out of battery
+ *         while traversing the map.
+ *
+ *         Once the battery is drained to 0, the turns value is passed
+ *         to the accumulator of dataObj, which records each robot's
+ *         turn value and calculates an average turn for each generation
+ *         of robots.
+ */
 void robotTesting(Robot robotArray[], RobotData& dataObj) 
 {
     dataObj.resetAccumulator();
     
-    // create a new map and use it to test robot, loop c_maxSimulation times for c_maxRobots robots
+    // create a new map and use it to test robot, loop c_maxSimulation
+    // times for c_maxRobots robots
     for (int i{0}; i < c_maxRobots; i++) 
     {
         Map mapObj;
@@ -81,8 +90,28 @@ void robotTesting(Robot robotArray[], RobotData& dataObj)
         
         dataObj.setAccumulator(robotArray[i].getTurns() - 5);
     }
+    
+    // Add fitness Score to robot data object
+    dataObj.setFitnessScore();
 }
 
+/**
+ *  Name: cullAndCreate
+ *  Parameters: robotArray (type Robot)
+ *  Notes: msort is called on robot array and sorts it in ascending
+ *         order based on each robot's turn variable. This places
+ *         the worst performing robots at the bottom of the array,
+ *         where the lowest 50% of robots are then 'culled' from the
+ *         group (sorry, evolution is harsh!) by having their objects
+ *         overwritten in memory.
+ *
+ *         The top performing 50% of robots are 'bred' with eachother
+ *         in pairs in descending order from the highest element in the
+ *         array. The genes from the two robots are combined into two new
+ *         robot objects (child1 and child2) and are inserted into the bottom
+ *         half of the array, where this new generation of robots will then take
+ *         part in the testing.
+ */
 void cullAndCreate(Robot robotArray[]) 
 {
     Robot tmp[c_maxRobots]; // Temp array for sorting algorithm
@@ -95,29 +124,36 @@ void cullAndCreate(Robot robotArray[])
     {
         if (i == 0) 
         {
-            Robot newRobot1(robotArray[c_maxRobots - 1],
+            Robot child1(robotArray[c_maxRobots - 1],
                             robotArray[c_maxRobots - 2], i);
             
-            Robot newRobot2(robotArray[c_maxRobots - 1],
+            Robot child2(robotArray[c_maxRobots - 1],
                             robotArray[c_maxRobots - 2], (i + 1));
             
-            robotArray[0] = newRobot1;
-            robotArray[1] = newRobot2;
+            robotArray[0] = child1;
+            robotArray[1] = child2;
 
         } else  {
             
-            Robot newRobot1(robotArray[c_maxRobots - (i + 1)],
+            Robot child1(robotArray[c_maxRobots - (i + 1)],
                             robotArray[c_maxRobots - (i + 2)], i);
             
-            Robot newRobot2(robotArray[c_maxRobots - (i + 1)],
+            Robot child2(robotArray[c_maxRobots - (i + 1)],
                             robotArray[c_maxRobots - (i + 2)], (i + 1));
             
-            robotArray[i]     = newRobot1;
-            robotArray[i + 1] = newRobot2;
+            robotArray[i]     = child1;
+            robotArray[i + 1] = child2;
         }
     }
 }
 
+/**
+ *  Name: resetRobots
+ *  Parameters: robotArray (type Robot)
+ *  Notes: Takes each robot obj in robotArray and re-initializes their
+ *         battery value to '5', turns value to '0' and generates a new
+ *         random starting position on the map with getRandNum().
+ */
 void resetRobots(Robot robotArray[]) 
 {
 

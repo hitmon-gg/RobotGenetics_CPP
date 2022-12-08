@@ -15,8 +15,8 @@
 class RobotData 
 {
     int  m_accumulator;
-    std::vector<int> m_fitnessScore;
     int  m_size;
+    std::vector<int> m_fitnessScoreVector;
     
 public:
     RobotData() { m_accumulator = 0; m_size = 0; }
@@ -24,8 +24,8 @@ public:
     void setFitnessScore();
     void resetAccumulator();
     void setAccumulator(int);
-    int  getRobotFitness(int) const;
-    void outputData() const;
+    [[nodiscard]] int getRobotFitness(int) const;
+    void outputData();
 };
 
 #endif /* RobotData_hpp */
