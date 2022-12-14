@@ -6,8 +6,8 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "Map.hpp"
-#include "NumGen.hpp"
+#include "../include/Map.hpp"
+#include "../include/NumGen.hpp"
 
 /**
  *  Function: Map()

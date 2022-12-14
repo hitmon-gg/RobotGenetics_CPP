@@ -7,7 +7,6 @@
 //
 
 #include <iostream>
-#include <memory>
 
 #include "../include/RobotData.hpp"
 #include "../include/Robot.hpp"
