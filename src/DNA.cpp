@@ -6,8 +6,8 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "DNA.hpp"
-#include "NumGen.hpp"
+#include "../include/DNA.hpp"
+#include "../include/NumGen.hpp"
 
 /**
  *  Function: DNA()

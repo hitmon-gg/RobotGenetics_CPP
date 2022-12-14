@@ -9,12 +9,12 @@
 #include <iostream>
 #include <memory>
 
-#include "RobotData.hpp"
-#include "Robot.hpp"
-#include "NumGen.hpp"
-#include "Map.hpp"
-#include "GlobalDefs.h"
-#include "MergeSort.hpp"
+#include "../include/RobotData.hpp"
+#include "../include/Robot.hpp"
+#include "../include/NumGen.hpp"
+#include "../include/Map.hpp"
+#include "../include/GlobalDefs.h"
+#include "../include/MergeSort.hpp"
 
 void robotTesting(Robot[], RobotData&);
 void cullAndCreate(Robot[]);

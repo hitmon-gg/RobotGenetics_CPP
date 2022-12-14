@@ -6,10 +6,10 @@
 //  Copyright © 2022 Ian Wallace. All rights reserved.
 //
 
-#include "Robot.hpp"
-#include "DNA.hpp"
-#include "NumGen.hpp"
-#include "GlobalDefs.h"
+#include "../include/Robot.hpp"
+#include "../include/DNA.hpp"
+#include "../include/NumGen.hpp"
+#include "../include/GlobalDefs.h"
 
 /**
  *  Function: Robot()
